@@ -31,8 +31,6 @@ const connect = {
         body,
       })
 
-      console.log(res.message)
-
       signals.onResponse({
         text: res?.message ?? 'Handler response',
         role: 'ai'
