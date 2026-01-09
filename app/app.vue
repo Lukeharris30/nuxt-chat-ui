@@ -57,7 +57,7 @@ const connect = {
         :messageStyles="{
           html: {shared: {bubble: {backgroundColor: 'unset', padding: '0px', width: '100%', textAlign: 'right'}}},
         }"
-        :chatStyle="{width: '60vw', height: '60vh' }"
+        :chatStyle="{width: '60vw', height: '90vh' }"
         :connect = "connect"
       />
     </div>
