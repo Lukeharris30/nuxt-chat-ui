@@ -1,8 +1,11 @@
+import type { MessageContent } from "deep-chat/dist/types/messages"
+import { mapMessageContentToDbRequest } from "../utils/mapMessageContentToDbRequest"
 export default defineEventHandler(async (event) => {
 
     const runtimeConfig = useRuntimeConfig()
-    console.log(runtimeConfig.nuxtDatabricksConnection)
-    const body = await readBody(event)
+    const body : MessageContent = await readBody(event)
+    const dbRequest = mapMessageContentToDbRequest(body)
+    console.log('dbRequest', dbRequest) 
     const exampleBody = {
         input: [
             {
@@ -20,7 +23,7 @@ export default defineEventHandler(async (event) => {
             headers: {
                 Authorization: `Basic ${Buffer.from('token' + ':' + runtimeConfig.nuxtDatabricksConnection).toString('base64')}`
             },
-            body: exampleBody 
+            body: dbRequest
         })
         
         console.log(result)

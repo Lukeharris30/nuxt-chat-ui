@@ -29,12 +29,12 @@ export interface DatabricksResponse {
     id: string,
     output: DatabricksOutputObject[],
 }
-
+export interface DataBricksInput {
+    role: string,
+    content: string,
+}
 export interface DatabricksRequestBody {
-    input: {
-        role: string,
-        content: string,
-    },
+    input: DataBricksInput[],
     custom_inputs: {
         thread_id: string
     }

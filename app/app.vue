@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-
+import type { MessageContent } from 'deep-chat/dist/types/messages'
 const history = ref([
   { role: 'ai', text: `## Hi \n\nHow are you today? **${new Date()}**` },
   {"html": "<button class='custom-button'>Button</button>", "role": "user"},
@@ -24,11 +24,11 @@ const htmlClassUtilities = {
 }
 
 const connect = {
-  handler: async(body, signals) => {
+  handler: async(body: MessageContent, signals) => {
     try {
       const res = await $fetch<{ message?: string }>('/api/fakeResponse', {
         method: 'POST',
-        body,
+        body
       })
       console.log(res)
 
