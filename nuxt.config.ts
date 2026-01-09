@@ -9,5 +9,13 @@ export default defineNuxtConfig({
     compilerOptions: {
       isCustomElement: tag => ['deep-chat'].includes(tag)
     }
+  }, 
+  runtimeConfig: {
+    // Private keys are only available on the server
+    nuxtDatabricksConnection: process.env.NUXT_DATABRICKS_CONNECTION,
+    // Public keys that are exposed to the client
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
+    },
   }
 })

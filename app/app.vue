@@ -30,6 +30,7 @@ const connect = {
         method: 'POST',
         body,
       })
+      console.log(res)
 
       signals.onResponse({
         text: res?.message ?? 'Handler response',
